@@ -1,0 +1,2 @@
+# BwInf2021_Exercise4
+Bei diesem Projekt handelt es sich um meiner Ausarbeitung der Aufgabe 4 im Bundeswettbewerb der Informatik 2021. Es ging darum, aus einer endlichen Menge an verschiedensten Wüfeln, zu bestimmen, welcher von ihnen am besten geeignet ist für ein komplettes Spiel "Mensch ärgere dich nicht". Dafür musste ich das komplette Spielprinzip mit allen Regeln, wie dem Rauswerfen programmatisch umsetzten und simulieren.
