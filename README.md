@@ -13,54 +13,54 @@
 4. Benutzung
 5. Beispiele
 6. Quellcode
-7. Programmstuktur
+7. Programmstruktur
 
 # 1. Informationen
 
-Bei diesem Projekt handelt es sich um meiner Ausarbeitung der Aufgabe 4 im Bundeswettbewerb der Informatik 2021. Es ging darum, aus einer endlichen Menge an verschiedensten Wüfeln, zu bestimmen, welcher von ihnen am besten geeignet ist für ein komplettes Spiel "Mensch ärgere dich nicht". Dafür musste ich das komplette Spielprinzip mit allen Regeln, wie dem Rauswerfen programmatisch umsetzten und simulieren.
+Bei diesem Projekt handelt es sich um meiner Ausarbeitung der Aufgabe 4 im Bundeswettbewerb der Informatik 2021. Es ging darum, aus einer endlichen Menge an verschiedensten Würfeln, zu bestimmen, welcher von ihnen am besten geeignet ist für ein komplettes Spiel "Mensch ärgere dich nicht". Dafür musste ich das komplette Spielprinzip mit allen Regeln, wie dem Herauswerfen programmatisch umsetzten und simulieren.
 
 # 2. Lösungsideen (+Probleme)
 
 ### Jeder Spieler hat seinen eigenen Spielplan
 
-<aside>
-💡 Bei meiner ersten Idee, spielt jeder Spieler auf seinem eigenen Spielplan, da jeder Spieler sozusagen seine eigene Strecke läuft und damit auch sein eigenes Ziel und einen separierten Start hat. Das Problem, das sich bei dieser Idee herausstellte, ist die Interaktion der Spieler untereinander, also das Herauswerfen und überspringen der fremden Spielfiguren. Ein Ansatz zur Lösung dieses Problemes wäre es gewesen, die einzelnen Spielfelder miteinander zu synchronisieren. Dies wäre aber eine häufige Fehlerursache geworden, sodass ich mich gegen diese Idee entschieden habe.
 
-</aside>
+💡 Bei meiner ersten Idee, spielt jeder Spieler auf seinem eigenen Spielplan, da jeder Spieler sozusagen seine eigene Strecke läuft und damit auch sein eigenes Ziel und einen separierten Start hat. Das Problem, das sich bei dieser Idee herausstellte, ist die Interaktion der Spieler untereinander, also das Herauswerfen und überspringen der fremden Spielfiguren. Ein Ansatz zur Lösung dieses Problems wäre es gewesen, die einzelnen Spielfelder miteinander zu synchronisieren. Dies wäre aber eine häufige Fehlerursache geworden, sodass ich mich gegen diese Idee entschieden habe.
+
+
 
 ### Es gibt einen Spielplan für alle Spieler, bei dem jedes Feld eine eigene ID besitzt
 
-<aside>
-💡 Da sich bei der ersten Idee, das Problem mit der schwierigen Synkrosation zwischen auftrat, entschied ich mich hier, ein Spielbrett für alle alle Figuren des Spieles zu definieren. Dabei wird jedes einzelnes Feld mit einer einzigartigen ID Nummer bestückt, sodass die Felder direkt ansprechbar sind.  Hier stellte sich aber dann das Problem, dass jeder Spieler seine eigene Strecke hat und nicht allgemein gesagt werden kann, dass die Strecke mit der ID 0 beginnt und mit der 39 aufhört, da jeder Spieler in sein eigenes Haus einbiegen muss.
 
-</aside>
+💡 Da sich bei der ersten Idee, das Problem mit der schwierigen Synchronisation zwischen auftrat, entschied ich mich hier, ein Spielbrett für alle Figuren des Spieles zu definieren. Dabei wird jedes einzelnes Feld mit einer einzigartigen ID Nummer bestückt, sodass die Felder direkt ansprechbar sind.  Hier stellte sich aber dann das Problem, dass jeder Spieler seine eigene Strecke hat und nicht allgemein gesagt werden kann, dass die Strecke mit der ID 0 beginnt und mit der 39 aufhört, da jeder Spieler in sein eigenes Haus einbiegen muss.
+
+
 
 ### Überarbeitung: Ein Spielplan, IDs für alle Felder, Spezifikation der einzelnen Felder
 
-<aside>
-💡 Die Lösung für das Problem der zweiten Idee und damit auch der endgültige Lösungsansatz ist es nun, weiterhin ein Spielfeld für alle Spieler zu deklarieren, aber alle Felder inklusive der Zielfelder mit einer eindeutigen ID als Eigenschaft des Objektes zu versehen. Außerdem besitzt die `Field`-Klasse noch die Eigenschaft, welchem Spieler das jeweilige Feld gehört. Somit kann die `GameFigure` Klasse eine Prozedur `getTargetField()` implementieren, die für einen Paramater `diced` das `Field` zurückgibt, auf dem die Figur nach dem Zug landet, während sie die fremden Zielfelder überspringt.
 
-</aside>
+💡 Die Lösung für das Problem der zweiten Idee und damit auch der endgültige Lösungsansatz ist es nun, weiterhin ein Spielfeld für alle Spieler zu deklarieren, aber alle Felder inklusive der Zielfelder mit einer eindeutigen ID als Eigenschaft des Objektes zu versehen. Außerdem besitzt die `Field`-Klasse noch die Eigenschaft, welchem Spieler das jeweilige Feld gehört. Somit kann die `GameFigure` Klasse eine Prozedur `getTargetField()` implementieren, die für einen Parameter `diced` das `Field` zurückgibt, auf dem die Figur nach dem Zug landet, während sie die fremden Zielfelder überspringt.
+
+
 
 # 3. Programmatische Umsetzung
 
-Nachdem ich der doch etwas umfangreicheren Aufgabe mich von Python 3 abgewendet habe, entschied ich mich für Java 16 als Programmiersprache, um dieses Projekt anzugehen. Die Gründe dafür sind meine mehrjährige Erfahrung mit Java aber hauptsächlich die Möglichkeit auf strikte Objektorientierung. Diese ist für die Aufgabe meiner Meinung nach essentiell, um den Überblick über die einzelnen Spielelemente, wie das Spielbrett, auf dem sich Spielfelder befinden und natütlich Objekte wie der Spieler, der würfen und ziehen kann, sowie das Spiel ansich, um allgemeine Methoden zentral definieren zu können.
+Nachdem ich der doch etwas umfangreicheren Aufgabe mich von Python 3 abgewendet habe, entschied ich mich für Java 16 als Programmiersprache, um dieses Projekt anzugehen. Die Gründe dafür sind meine mehrjährige Erfahrung mit Java, aber hauptsächlich die Möglichkeit auf strikte Objektorientierung. Diese ist für die Aufgabe meiner Meinung nach essenziell, um den Überblick über die einzelnen Spielelemente, wie das Spielbrett, auf dem sich Spielfelder befinden und natütlich Objekte wie der Spieler, der würfen und ziehen kann, sowie das Spiel an sich, um allgemeine Methoden zentral definieren zu können.
 
 Ich implementierte also in der Java Entwicklungsumgebung *(IDE)* "IntelliJ Ultimate" die Klassen
 
 `Game.java`, `GameField.java`, `GameFigure.java`, `GamePlan.java` und `GamePlayer.java`.
 
-Näherer Sinn, Funktionen der einzelnen Klassen und ein Class-Diagramm finden Sie unter dem Punkt "**6. Programmstuktur**"
+Näherer Sinn, Funktionen der einzelnen Klassen und ein Class-Diagramm finden Sie unter dem Punkt "**6. Programmstruktur**"
 
 # 4. Benutzung
 
-Das Programm lässt sich durch einen Befehl aktivieren, in welchem auch Einstelungsparamter wie Anzahl der Iterationen der Spielkombinationen, und der Pfad festgelegt werden kann.
+Das Programm lässt sich durch einen Befehl aktivieren, in welchem auch Einstellungsparameter wie Anzahl der Iterationen der Spielkombinationen, und der Pfad festgelegt werden kann.
 
 ```bash
 java -jar Exercise4.java <boolean showDebug> <int iterations> <string pathToFile>
 ```
 
-- showDebug - Gibt an, ab alle Nachrichten wie der komplette Spielverlauf in der Console angezeigt werden sollen. Dies ist sinnvoll, um das Spiel im Nachhinein nachvollziehen zu können. Die möglichen Werte sind true und false
+- showDebug - Gibt an, ab alle Nachrichten wie der komplette Spielverlauf in der Konsole angezeigt werden sollen. Dies ist sinnvoll, um das Spiel im Nachhinein nachvollziehen zu können. Die möglichen Werte sind true und false
 - iterations - Gibt an, wie oft jede Spielkombination gespielt werden soll. Je höher diese Zahl ist, desto genauer ist das Ergebnis, aber es dauert auch länger. Das Wertespektrum für diesen Parameter sind alle natürlichen, ganzen Zahlen größer als 0.
 - pathToFile - Gibt an, unter welchem Pfad die Datei mit den zu testenden Würfeln gespeichert ist. Eine relative Pfadangabe ist möglich. Dieser Wert ist ein beliebiger String.
 
@@ -84,7 +84,7 @@ java -jar Exercise4.java <boolean showDebug> <int iterations> <string pathToFile
 
 # 5. Beispiel
 
-Genutzer Befehl: `java -jar Exercise4.jar false 50 dice0.txt`
+Benutzer Befehl: `java -jar Exercise4.jar false 50 dice0.txt`
 
 ### dices0.txt - Dauerte ungefähr 16,5 Sekunden
 
@@ -104,8 +104,7 @@ Here are the wins of each dice ordered by quantity:
 
 Ich werde unter diesem Abschnitt für jede Regel aus dem offiziellen Regelwerk den dafür zuständigen Code Schnipsel hier einfügen.
 
-> *Wer seine vier Spielsteine als erster „nach Hause“ gebracht hat,
-gewinnt das Spiel*
+> *Wer seine vier Spielsteine als erster „nach Hause“ gebracht hat, gewinnt das Spiel*
 > 
 
 ```java
@@ -128,7 +127,7 @@ public boolean hasWon() {
 ```
 
 > *Der Spieler, der an der Reihe ist, würfelt und setzt seinen Spielstein
-um die gewürfelte Augenzahl in Pfeilrichtung auf der Laufbahn vor.
+Um die gewürfelte Augenzahl in Pfeilrichtung auf der Laufbahn vor.
 Eigene und fremde Steine können übersprungen werden, die besetzten Felder werden aber mitgezählt.*
 > 
 
@@ -136,6 +135,7 @@ Eigene und fremde Steine können übersprungen werden, die besetzten Felder werd
 von einer fremden Spielfigur besetzt ist, schlägt diese Figur und setzt
 seinen eigenen Stein auf ihren Platz.*
 > 
+
 
 ```java
 public void turn() {
@@ -195,8 +195,7 @@ public void turn() {
     }
 ```
 
-> *Wer mehrere Spielsteine auf der Laufbahn stehen hat, muss mit dem
-vordersten Stein ziehen, der gezogen werden kann.*
+> *Wer mehrere Spielsteine auf der Laufbahn stehen hat, muss mit dem vordersten Stein ziehen, der gezogen werden kann.*
 > 
 
 ```java
@@ -261,8 +260,7 @@ Erzielt er dabei wieder eine „6“, darf er erneut nach dem Ziehen
 würfeln.*
 > 
 
-> *Bei einer „6“ muss man einen neuen Stein ins Spiel bringen, so
-lange noch Spielfiguren auf den eigenen B-Feldern stehen. Der neue
+> *Bei einer „6“ muss man einen neuen Stein ins Spiel bringen, solange noch Spielfiguren auf den eigenen B-Feldern stehen. Der neue
 Stein wird dann auf das Feld A der eigenen Farbe gestellt.*
 > 
 
@@ -319,7 +317,7 @@ if ((field != null && field.getLimited() == null) || (field != null && field.get
 
 ## Simulationssteuerung
 
-Hier sind wichtige Code Teile, die daür sorgen, dass die Dateien korrekt ausgelesen werden und die einzelnen Simulationen gestartet werden.
+Hier sind wichtige Code Teile, die dafür sorgen, dass die Dateien korrekt ausgelesen werden und die einzelnen Simulationen gestartet werden.
 
 ### Auswahl der Spielkombinationen
 
@@ -386,42 +384,42 @@ Jede Klasse implementiert das `Game` Objekt, um auf alle Daten des Spiels von ü
 
 ### `Exercise4.java`
 
-<aside>
-💡 Hier startet die ganze Simulation in der `main()` Methode. Außerdem enthält sie nich eine Funktion, um Nachrichten in einem bestimmten Format auszugeben.
 
-</aside>
+💡 Hier startet die ganze Simulation in der `main()` Methode. Außerdem enthält sie nicht eine Funktion, um Nachrichten in einem bestimmten Format auszugeben.
+
+
 
 ### `Game.java`
 
-<aside>
+
 💡 Über diese Klasse bzw. dieses Objekt werden allgemeine Funktionen des Spielablaufs definiert, wie zum Beispiel das Bewegen von Figuren, der Gewinnerstatus oder der Spieler, der momentan an der Reihe ist.
 
-</aside>
+
 
 ### `GamePlayer.java`
 
-<aside>
-💡 Hier sind Spielerspezifische Funktionen und Eigenschaften gespeichert, wie z.B. der einzelne Zug und die jeweiligen Figuren, die zu dem Spieler gehören.
 
-</aside>
+💡 Hier sind Spieler spezifische Funktionen und Eigenschaften gespeichert, wie z.B. der einzelne Zug und die jeweiligen Figuren, die zu dem Spieler gehören.
+
+
 
 ### `GameFigure.java`
 
-<aside>
-💡 Die eben genannten Figuren sind alles Objekte dieses Types. Sie implementiert z.B. die Eigenschaften des Besitzers, sowie das Feld, auf dem die Figur steht.
 
-</aside>
+💡 Die eben genannten Figuren sind alles Objekte dieses Typen. Sie implementiert z.B. die Eigenschaften des Besitzers, sowie das Feld, auf dem die Figur steht.
+
+
 
 ### `GameField.java`
 
-<aside>
-💡 Das ist das einzelne Feld, auf dem eine Figur stehen kann, oder auch nicht stehen kann. Über diese Info gibt die Eigenschaft `content` Info. Eine Liste mit vielen dieser Objekte befindet sich auf dem Spielfeld.
 
-</aside>
+💡 Das ist das einzelne Feld, auf dem eine Figur stehen kann, oder auch nicht stehen kann. Über diese Information gibt die Eigenschaft `content` Information. Eine Liste mit vielen dieser Objekte befindet sich auf dem Spielfeld.
+
+
 
 ### `GamePlan.java`
 
-<aside>
+
 💡 Diese Klasse stellt das eigentliche Spielfeld dar. Es enthält eine Liste aller Plätze für Felder und die einzelnen Häuser mit den IDs der Spieler.
 
-</aside>
+
