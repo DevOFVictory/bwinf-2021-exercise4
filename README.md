@@ -17,7 +17,7 @@
 
 # 1. Information
 
-This project is my elaboration of Task 4 in the Federal Computer Science Competition 2021. The idea was to determine from a finite set of different dice which one of them is best suited for a complete game of “Don`t Be Pissed Man.” For this, I had to implement and simulate the entire game principle with all the rules, such as throwing out.
+This project is my elaboration of Task 4 in the Federal Computer Science Competition 2021. The idea was to determine from a finite set of different dice which one of them is best suited for a complete game of “Don't get angry”. For this, I had to implement and simulate the entire game principle with all the rules, such as throwing out.
 # 2. Ideas for solutions (+ Problems)
 
 ### Each player has their own game plan
