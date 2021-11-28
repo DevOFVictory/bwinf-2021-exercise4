@@ -1,4 +1,4 @@
-**English Version coming soon...**
+**English version coming soon...**
 # 🎲 Aufgabe 4: Würfelglück
 
 *DevOFVictory, 28.11.21 - Bundeswettbewerb Informatik 2021*
