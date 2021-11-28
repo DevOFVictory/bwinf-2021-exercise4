@@ -1,4 +1,4 @@
-**[Switch to german version](README.md)**
+**[Switch to german version](README-de.md)**
 # 🎲 Exercise 4: Lucky dice
 
 *DevOFVictory, 11/28/21 - Federal Computer Science Competition 2021*
