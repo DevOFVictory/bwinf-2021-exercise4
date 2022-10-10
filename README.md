@@ -102,8 +102,8 @@ Here are the wins of each dice ordered by quantity:
 
 I`m going to insert the code snippet for each rule from the official german rulebook here under this section.
 
-> *Wer seine vier Spielsteine als erster „nach Hause“ gebracht hat,
-gewinnt das Spiel*
+> *The first player to bring his four game pieces "home",
+wins the game*
 > 
 
 ```java
@@ -125,14 +125,14 @@ public boolean hasWon() {
     }
 ```
 
-> *Der Spieler, der an der Reihe ist, würfelt und setzt seinen Spielstein
-um die gewürfelte Augenzahl in Pfeilrichtung auf der Laufbahn vor.
-Eigene und fremde Steine können übersprungen werden, die besetzten Felder werden aber mitgezählt.*
+> *The player whose turn it is rolls the dice and advances his token by the number
+by the number of dice rolled in the direction of the arrow.
+Own and foreign stones can be skipped, but the occupied fields are counted.*
 > 
 
-> *Wer mit dem letzten Punkt seiner Augenzahl auf ein Feld trifft, das
-von einer fremden Spielfigur besetzt ist, schlägt diese Figur und setzt
-seinen eigenen Stein auf ihren Platz.*
+> *Whoever hits a square with the last point of his number of dice that is
+occupied by another player's piece, captures that piece and places his own
+his own piece in its place.*
 > 
 
 ```java
@@ -193,8 +193,8 @@ public void turn() {
     }
 ```
 
-> *Wer mehrere Spielsteine auf der Laufbahn stehen hat, muss mit dem
-vordersten Stein ziehen, der gezogen werden kann.*
+> *If you have more than one piece on the track, you must move the frontmost
+move with the frontmost piece that can be moved.*
 > 
 
 ```java
@@ -237,9 +237,9 @@ public GameFigure getFirstGameFigure(List<GameFigure> includedFigures) {
     }
 ```
 
-> *So lange noch weitere Steine auf den B-Feldern auf ihren Spieleinsatz warten, darf keine eigene Figur auf dem A-Feld stehen bleiben.
-Sie muss das Feld frei machen, sobald sie die Möglichkeit dazu
-hat.*
+> *As long as other pieces are waiting on the B-squares, no piece may remain on the A-square.
+It must clear the square as soon as it has the opportunity to do so.
+has the opportunity.*
 > 
 
 ```java
@@ -250,18 +250,18 @@ if (!getStart().isOccupied()) {
 }
 ```
 
-> *Die Steine, die auf den B-Feldern stehen, können nur mit einer „6“
-ins Spiel gebracht und damit auf das Anfangsfeld A gesetzt werden.*
+> *The checkers placed on the B-squares can only be put into play with a "6".
+into the game and thus be placed on the starting square A.*
 > 
 
-> *Wer eine „6“ würfelt, hat nach seinem Zug einen weiteren Wurf frei.
-Erzielt er dabei wieder eine „6“, darf er erneut nach dem Ziehen
-würfeln.*
+> *Whoever rolls a "6" has another free roll after his turn.
+If he rolls a "6" again, he may roll again after the draw.
+roll the dice.*
 > 
 
-> *Bei einer „6“ muss man einen neuen Stein ins Spiel bringen, so
-lange noch Spielfiguren auf den eigenen B-Feldern stehen. Der neue
-Stein wird dann auf das Feld A der eigenen Farbe gestellt.*
+> *If you get a "6", you must bring a new piece into play as long as there are
+as long as there are still pieces on your own B-squares. The new
+The new piece is then placed on the A square of your own color.*
 > 
 
 ```java
@@ -285,12 +285,12 @@ if (diced != 6) {
 }
 ```
 
-> *Steht dagegen eine
-fremde Figur auf dem Feld A, wird sie geschlagen.*
+> *If, on the other hand, a
+If a foreign piece is on square A, it is captured.*
 > 
 
-> *Wer eine „6“ würfelt und keinen Stein mehr auf den B-Feldern hat,
-darf mit einer seiner Figuren auf der Laufbahn sechs Felder weiterziehen und dann noch einmal würfeln.*
+> *If you roll a "6" and have no more pieces on the B squares,
+may move one of his pieces six spaces further along the track and then roll the dice again.*
 > 
 
 ```java
@@ -372,7 +372,7 @@ while (game.isRunning()) {
 }
 ```
 
-# 7. Programmstruktur
+# 7. Applicationstructure
 
 ## Class Diagramm
 
